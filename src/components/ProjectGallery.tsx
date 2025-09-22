@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
 
 interface ProjectGalleryProps {
+  featured: boolean;
   images: string[];
   title: string;
 }
 
-const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
+const ProjectGallery = ({ featured, images, title }: ProjectGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [zoomLevel, setZoomLevel] = useState(1);
@@ -105,30 +106,27 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-3 h-[300px]">
+      <div
+        className={`relative h-[240px] bg-muted overflow-hidden cursor-pointer group shadow-soft hover:shadow-elevation transition-smooth ${
+          featured ? "rounded-lg" : ""
+        }`}
+        onClick={() => openGallery(0)}
+      >
         {/* Main image */}
-        <div
-          className="col-span-3 bg-muted rounded-lg overflow-hidden cursor-pointer group shadow-soft hover:shadow-elevation transition-smooth"
-          onClick={() => openGallery(0)}
-        >
-          {images[0] ? (
-            <img
-              src={images[0]}
-              alt={`${title} - Imagem principal`}
-              className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-              onError={(e) => {
-                console.error(`Erro ao carregar imagem: ${images[0]}`);
-                e.currentTarget.style.display = "none";
-                const sibling = e.currentTarget
-                  .nextElementSibling as HTMLElement;
-                if (sibling) sibling.style.display = "flex";
-              }}
-            />
-          ) : null}
-          <div
-            className="w-full h-full bg-gradient-to-br from-melon/20 to-silver/30 flex items-center justify-center"
-            style={{ display: images[0] ? "none" : "flex" }}
-          >
+        {images[0] ? (
+          <img
+            src={images[0]}
+            alt={`${title} - Imagem principal`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+            onError={(e) => {
+              console.error(`Erro ao carregar imagem: ${images[0]}`);
+              e.currentTarget.style.display = "none";
+              const sibling = e.currentTarget.nextElementSibling as HTMLElement;
+              if (sibling) sibling.style.display = "flex";
+            }}
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-melon/20 to-silver/30 flex items-center justify-center">
             <div className="text-center p-8">
               <div className="w-16 h-16 bg-accent rounded-lg mx-auto mb-4 flex items-center justify-center">
                 <span className="text-2xl font-bold text-accent-foreground">
@@ -140,40 +138,24 @@ const ProjectGallery = ({ images, title }: ProjectGalleryProps) => {
               </p>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Thumbnails */}
-        <div className="flex flex-col gap-3">
-          {[1, 2, 3].map((index) => (
-            <div
-              key={index}
-              className="bg-muted rounded-lg overflow-hidden cursor-pointer group shadow-soft hover:shadow-elevation transition-smooth flex-1"
-              onClick={() => openGallery(index)}
-            >
-              {images[index] ? (
-                <img
-                  src={images[index]}
-                  alt={`${title} - Imagem ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-                  onError={(e) => {
-                    console.error(`Erro ao carregar imagem: ${images[index]}`);
-                    e.currentTarget.style.display = "none";
-                    const sibling = e.currentTarget
-                      .nextElementSibling as HTMLElement;
-                    if (sibling) sibling.style.display = "flex";
-                  }}
-                />
-              ) : null}
-              <div
-                className="w-full h-full bg-gradient-to-br from-silver/20 to-taupe/10 flex items-center justify-center"
-                style={{ display: images[index] ? "none" : "flex" }}
-              >
-                <span className="text-muted-foreground text-xs">
-                  {index === 1 ? "📋" : index === 2 ? "🏗️" : "📊"}
-                </span>
-              </div>
-            </div>
-          ))}
+        {/* Overlay com contador de imagens */}
+        {images.length > 1 && (
+          <div
+            className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full pointer-events-none"
+          >
+            +{images.length - 1} foto{images.length > 2 ? "s" : ""}
+          </div>
+        )}
+
+        {/* Overlay com botão de visualizar */}
+        <div 
+          className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center pointer-events-none"
+        >
+          <div className="bg-white/90 text-black px-3 py-1 rounded-full text-sm font-medium">
+            Ver galeria
+          </div>
         </div>
       </div>
 

@@ -5,7 +5,7 @@ import portfolioBg from "@/assets/portfolio-bg.jpg";
 const AboutSection = () => {
   return (
     <section id="about" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Sobre Mim</h2>

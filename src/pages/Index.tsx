@@ -29,8 +29,10 @@ const Index = () => {
         <Footer />
       </div>
 
-      {/* Versão para impressão */}
-      <PrintPortfolio />
+      {/* Versão para impressão - só aparece quando imprimir */}
+      <div className="hidden print:block">
+        <PrintPortfolio />
+      </div>
     </div>
   );
 };

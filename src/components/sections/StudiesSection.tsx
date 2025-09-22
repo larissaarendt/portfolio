@@ -6,7 +6,7 @@ import { studies } from "@/data/studies";
 const StudiesSection = () => {
   return (
     <section id="studies" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-3 mb-4">
             <FileText className="w-8 h-8 text-accent" />

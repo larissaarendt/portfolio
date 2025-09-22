@@ -4,10 +4,10 @@ import { studies } from "@/data/studies";
 import QRCodePrint from "@/components/QRCodePrint";
 
 const PrintPortfolio = () => {
-  const currentUrl = window.location.origin;
+  const currentUrl = `${window.location.origin}/portfolio/`;
 
   return (
-    <div className="print:block hidden">
+    <div className="block print:block">
       {/* Página 1 - Capa */}
       <div className="min-h-screen flex flex-col justify-center items-center p-8 page-break-after">
         <div className="text-center max-w-4xl">
@@ -77,8 +77,9 @@ const PrintPortfolio = () => {
                 <li>• Projeto Arquitetônico Residencial e Comercial</li>
                 <li>• Design de Interiores</li>
                 <li>• Planejamento Urbano</li>
-                <li>• Sustentabilidade e Eficiência Energética</li>
-                <li>• Acessibilidade Universal</li>
+                <li>
+                  • Licenciamento Ambiental para Obras e Mobiliário Corporativo
+                </li>
               </ul>
             </div>
 
@@ -99,7 +100,6 @@ const PrintPortfolio = () => {
                   <h4 className="font-medium mb-2">Visualização</h4>
                   <ul className="text-sm space-y-1 text-raisin-black">
                     <li>Lumion</li>
-                    <li>V-Ray</li>
                     <li>Photoshop</li>
                   </ul>
                 </div>
@@ -119,176 +119,181 @@ const PrintPortfolio = () => {
       </div>
 
       {/* Páginas de Projetos Arquitetônicos */}
-      {projects
-        .filter((p) => p.category === "Projeto Arquitetônico")
-        .map((project, index) => (
-          <div
-            key={index}
-            className="min-h-screen p-8 page-break-after break-inside-avoid"
-          >
-            <div className="max-w-4xl mx-auto break-inside-avoid">
-              <div className="mb-8 break-inside-avoid">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-3xl font-bold text-raisin-black">
-                    {project.title}
-                  </h2>
-                  <span className="text-lg text-wenge font-medium">
-                    {project.year}
-                  </span>
-                </div>
-                <div className="w-full h-1 bg-gradient-to-r from-melon to-wenge mb-6"></div>
+      {projects.map((project, index) => (
+        <div
+          key={index}
+          className="min-h-screen p-8 page-break-after break-inside-avoid"
+        >
+          <div className="max-w-4xl mx-auto break-inside-avoid">
+            <div className="mb-8 break-inside-avoid">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-3xl font-bold text-raisin-black">
+                  {project.title}
+                </h2>
+                <span className="text-lg text-wenge font-medium">
+                  {project.year}
+                </span>
               </div>
+              <div className="w-full h-1 bg-gradient-to-r from-melon to-wenge mb-6"></div>
+            </div>
 
-              {/* Layout principal reorganizado */}
-              <div className="space-y-6">
-                {/* Galeria de Imagens do Projeto - manter junto com título */}
-                {project.images && project.images.length > 0 && (
-                  <div className="mb-6 break-inside-avoid">
-                    <h3 className="text-xl font-semibold mb-4 text-wenge">
-                      Imagens do Projeto
-                    </h3>
+            {/* Layout principal reorganizado */}
+            <div className="space-y-6">
+              {/* Galeria de Imagens do Projeto - manter junto com título */}
+              {project.images && project.images.length > 0 ? (
+                <div className="mb-6 break-inside-avoid">
+                  <h3 className="text-xl font-semibold mb-4 text-wenge">
+                    Imagens do Projeto
+                  </h3>
 
-                    {/* Grid uniforme 2x2 para todas as imagens */}
-                    <div className="grid grid-cols-2 gap-4 break-inside-avoid">
-                      {project.images.map((image, imgIndex) => {
-                        const getImageType = (img: string) => {
-                          const filename = img.toLowerCase();
-                          if (
-                            filename.includes("planta") ||
-                            filename.includes("plant")
-                          )
-                            return "Planta";
-                          if (filename.includes("corte")) return "Corte";
-                          if (filename.includes("fachada")) return "Fachada";
-                          if (filename.includes("perspectiva"))
-                            return "Perspectiva";
-                          if (filename.includes("interior")) return "Interior";
-                          if (filename.includes("area")) return "Área";
-                          if (filename.includes("implantacao"))
-                            return "Implantação";
-                          if (filename.includes("detalhes")) return "Detalhes";
-                          if (filename.includes("vista")) return "Vista";
-                          return imgIndex === 0 ? "Principal" : "Vista";
-                        };
+                  {/* Grid uniforme 2x2 para todas as imagens */}
+                  <div className="grid grid-cols-2 gap-4 break-inside-avoid">
+                    {project.images.map((image, imgIndex) => {
+                      const getImageType = (img: string) => {
+                        const filename = img.toLowerCase();
+                        if (
+                          filename.includes("planta") ||
+                          filename.includes("plant")
+                        )
+                          return "Planta";
+                        if (filename.includes("corte")) return "Corte";
+                        if (filename.includes("fachada")) return "Fachada";
+                        if (filename.includes("perspectiva"))
+                          return "Perspectiva";
+                        if (filename.includes("interior")) return "Interior";
+                        if (filename.includes("area")) return "Área";
+                        if (filename.includes("implantacao"))
+                          return "Implantação";
+                        if (filename.includes("detalhes")) return "Detalhes";
+                        if (filename.includes("vista")) return "Vista";
+                        return imgIndex === 0 ? "" : "";
+                      };
 
-                        return (
-                          <div
-                            key={imgIndex}
-                            className="bg-bone/30 rounded-lg overflow-hidden border border-wenge/10 relative"
-                          >
-                            <div className="absolute top-2 left-2 bg-melon/90 text-raisin-black px-2 py-1 rounded text-xs font-medium z-10">
-                              {getImageType(image)}
-                            </div>
-                            <img
-                              src={image}
-                              alt={`${project.title} - ${getImageType(image)}`}
-                              className="w-full h-32 object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = "none";
-                                const parent = target.parentElement;
-                                if (parent) {
-                                  parent.innerHTML = `
+                      return (
+                        <div
+                          key={imgIndex}
+                          className="bg-bone/30 rounded-lg overflow-hidden border border-wenge/10 relative"
+                        >
+                          <div className="absolute top-2 left-2 bg-melon/90 text-raisin-black px-2 py-1 rounded text-xs font-medium z-10">
+                            {getImageType(image)}
+                          </div>
+                          <img
+                            src={image}
+                            alt={`${project.title} - ${getImageType(image)}`}
+                            className="w-full h-32 object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = "none";
+                              const parent = target.parentElement;
+                              if (parent) {
+                                parent.innerHTML = `
                                     <div class="w-full h-32 bg-gradient-to-br from-bone/20 to-wenge/10 flex items-center justify-center">
                                       <span class="text-wenge text-xs">📸 ${getImageType(
                                         image
                                       )}</span>
                                     </div>
                                   `;
-                                }
-                              }}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
+                              }
+                            }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                    {/* Nota sobre versão digital */}
-                    <div className="mt-4 p-3 bg-isabelline/30 rounded-lg border border-melon/20">
-                      <p className="text-xs text-center text-wenge italic">
-                        Para visualizar as imagens em tamanho completo e com
-                        maior resolução, acesse a versão digital do portfólio no
-                        site.
+                  {/* Nota sobre versão digital */}
+                  <div className="mt-4 p-3 bg-isabelline/30 rounded-lg border border-melon/20">
+                    <p className="text-xs text-center text-wenge italic">
+                      Para visualizar as imagens em tamanho completo e com maior
+                      resolução, acesse a versão digital do portfólio no site.
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="mb-6 p-4 bg-isabelline/30 rounded-lg border border-melon/20">
+                  <p className="text-sm text-center text-wenge italic">
+                    Para visualizar as imagens deste projeto em tamanho completo
+                    e com maior resolução, acesse a versão digital do portfólio
+                    no site.
+                  </p>
+                </div>
+              )}
+
+              {/* Seção de conceito e informações técnicas lado a lado */}
+              <div className="grid md:grid-cols-2 gap-6 page-break-before pt-8">
+                {/* Conceito do Projeto */}
+                <div className="bg-bone/30 p-6 rounded-lg break-inside-avoid">
+                  <h3 className="text-xl font-semibold mb-4 text-wenge">
+                    Conceito do Projeto
+                  </h3>
+                  <p className="text-base leading-relaxed text-raisin-black mb-4">
+                    {project.description}
+                  </p>
+
+                  {project.featured && (
+                    <div className="bg-isabelline/50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-3 text-wenge">
+                        Características Principais:
+                      </h4>
+                      <ul className="text-sm text-raisin-black space-y-1">
+                        <li>• Vista privilegiada para o Aruatos da Paz</li>
+                        <li>• Integração com a paisagem circundante</li>
+                        <li>• Conceito de farol que guia o saber</li>
+                        <li>• Ênfase na acessibilidade e fluidez</li>
+                        <li>• Uso de materiais sustentáveis</li>
+                        <li>• Aproveitamento da iluminação natural</li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+
+                {/* Informações técnicas - altura independente */}
+                <div className="bg-wenge/10 p-6 rounded-lg break-inside-avoid self-start">
+                  <h4 className="font-semibold mb-4 text-wenge">
+                    Informações Técnicas
+                  </h4>
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-medium text-raisin-black">
+                        Categoria:
+                      </p>
+                      <p className="text-wenge">{project.category}</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-raisin-black">Ano:</p>
+                      <p className="text-wenge">{project.year}</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-raisin-black">Status:</p>
+                      <p className="text-wenge">Projeto Acadêmico</p>
+                    </div>
+                    <div>
+                      <p className="font-medium text-raisin-black">Tipo:</p>
+                      <p className="text-wenge">
+                        {project.title.includes("Farol")
+                          ? "Biblioteca Pública"
+                          : project.title.includes("Hotel")
+                          ? "Hospitalidade"
+                          : project.title.includes("ILPI")
+                          ? "Institucional"
+                          : "Residencial"}
                       </p>
                     </div>
-                  </div>
-                )}
-
-                {/* Seção de conceito e informações técnicas lado a lado */}
-                <div className="grid md:grid-cols-2 gap-6 page-break-before pt-8">
-                  {/* Conceito do Projeto */}
-                  <div className="bg-bone/30 p-6 rounded-lg break-inside-avoid">
-                    <h3 className="text-xl font-semibold mb-4 text-wenge">
-                      Conceito do Projeto
-                    </h3>
-                    <p className="text-base leading-relaxed text-raisin-black mb-4">
-                      {project.description}
-                    </p>
-
-                    {project.featured && (
-                      <div className="bg-isabelline/50 p-4 rounded-lg">
-                        <h4 className="font-semibold mb-3 text-wenge">
-                          Características Principais:
-                        </h4>
-                        <ul className="text-sm text-raisin-black space-y-1">
-                          <li>• Vista privilegiada para o Aruatos da Paz</li>
-                          <li>• Integração com a paisagem circundante</li>
-                          <li>• Conceito de farol que guia o saber</li>
-                          <li>• Ênfase na acessibilidade e fluidez</li>
-                          <li>• Uso de materiais sustentáveis</li>
-                          <li>• Aproveitamento da iluminação natural</li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Informações técnicas - altura independente */}
-                  <div className="bg-wenge/10 p-6 rounded-lg break-inside-avoid self-start">
-                    <h4 className="font-semibold mb-4 text-wenge">
-                      Informações Técnicas
-                    </h4>
-                    <div className="space-y-3 text-sm">
-                      <div>
-                        <p className="font-medium text-raisin-black">
-                          Categoria:
-                        </p>
-                        <p className="text-wenge">{project.category}</p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-raisin-black">Ano:</p>
-                        <p className="text-wenge">{project.year}</p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-raisin-black">Status:</p>
-                        <p className="text-wenge">Projeto Acadêmico</p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-raisin-black">Tipo:</p>
-                        <p className="text-wenge">
-                          {project.title.includes("Farol")
-                            ? "Biblioteca Pública"
-                            : project.title.includes("Hotel")
-                            ? "Hospitalidade"
-                            : project.title.includes("ILPI")
-                            ? "Institucional"
-                            : "Residencial"}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="font-medium text-raisin-black">
-                          Total de Imagens:
-                        </p>
-                        <p className="text-wenge">
-                          {project.images?.length || 0} imagens técnicas
-                        </p>
-                      </div>
+                    <div>
+                      <p className="font-medium text-raisin-black">
+                        Total de Imagens:
+                      </p>
+                      <p className="text-wenge">
+                        {project.images?.length || 0} imagens técnicas
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        ))}
+        </div>
+      ))}
 
       {/* Página de Projetos de Interior */}
       <div className="min-h-screen p-8 page-break-after break-inside-avoid">
