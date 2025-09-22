@@ -117,7 +117,7 @@ const ProjectGallery = ({ featured, images, title }: ProjectGalleryProps) => {
           <img
             src={images[0]}
             alt={`${title} - Imagem principal`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+            className="w-full h-full object-cover group-hover:scale-105 transition-smooth transition-all"
             onError={(e) => {
               console.error(`Erro ao carregar imagem: ${images[0]}`);
               e.currentTarget.style.display = "none";
@@ -142,17 +142,13 @@ const ProjectGallery = ({ featured, images, title }: ProjectGalleryProps) => {
 
         {/* Overlay com contador de imagens */}
         {images.length > 1 && (
-          <div
-            className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full pointer-events-none"
-          >
+          <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full pointer-events-none">
             +{images.length - 1} foto{images.length > 2 ? "s" : ""}
           </div>
         )}
 
         {/* Overlay com botão de visualizar */}
-        <div 
-          className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center pointer-events-none"
-        >
+        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-smooth flex items-center justify-center pointer-events-none">
           <div className="bg-white/90 text-black px-3 py-1 rounded-full text-sm font-medium">
             Ver galeria
           </div>
