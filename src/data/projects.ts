@@ -2,17 +2,23 @@ export interface Project {
   title: string;
   category: string;
   description: string;
+  description_complete?: string[];
   year: string;
   images: string[];
   featured?: boolean;
+  highlights?: string[];
 }
 
 export const projects: Project[] = [
   {
-    title: "Farol das Letras - Biblioteca",
+    title: "Farol das Letras - Biblioteca Pública",
     category: "Projeto Arquitetônico",
     description:
-      "O conceito do projeto 'Farol das Letras' busca integrar o ambiente de estudo com a paisagem circundante, em especial a vista privilegiada para o horizonte oferecida pela localização em frente ao Aruatos da Paz, um espaço de grande valor cultural e simbólico para a cidade. A biblioteca deve funcionar como um marco visual, evocando a ideia de um farol que guia e inspira o saber, proporcionando uma experiência de aprendizado imersiva e conectada com o ambiente natural e urbano.",
+      "Desenvolvido em grupo para a disciplina de Projeto Arquitetônico – Tópicos Executivos, o projeto Farol das Letras propõe a criação de uma biblioteca que integra o ambiente de estudo com a paisagem circundante. Localizado em frente ao Aruatos da Paz, um espaço de grande valor cultural e simbólico, o edifício se destaca como um marco visual da cidade, evocando a imagem de um farol que guia e inspira o saber...",
+    description_complete: [
+      "Desenvolvido em grupo para a disciplina de Projeto Arquitetônico – Tópicos Executivos, o projeto Farol das Letras propõe a criação de uma biblioteca que integra o ambiente de estudo com a paisagem circundante. Localizado em frente ao Aruatos da Paz, um espaço de grande valor cultural e simbólico, o edifício se destaca como um marco visual da cidade, evocando a imagem de um farol que guia e inspira o saber. ",
+      "O projeto busca proporcionar uma experiência de aprendizado imersiva, conectando os usuários ao ambiente natural e urbano, valorizando a vista privilegiada para o horizonte e promovendo a relação entre cultura, educação e cidade. A proposta também contempla estratégias de integração entre espaços internos e externos, criando fluxos contínuos de circulação e áreas de convivência que reforçam o caráter educativo e inspirador do edifício.",
+    ],
     year: "2024",
     images: [
       "images/farol-das-letras-fachada-principal.jpg",
@@ -28,6 +34,12 @@ export const projects: Project[] = [
       "images/farol-das-letras-detalhes-construtivos.jpg",
     ],
     featured: true,
+    highlights: [
+      "Integração com a paisagem",
+      "Iluminação natural estratégica",
+      "Qualidade espacial e funcionalidade",
+      "Fluxos e integração interna/externa",
+    ],
   },
   {
     title: "Museu da cidade",
@@ -44,6 +56,7 @@ export const projects: Project[] = [
       "images/museu-planta-baixa.jpg",
       "images/museu-corte-transversal.jpg",
     ],
+    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
   },
   {
     title: "Casarão 1806",
@@ -59,6 +72,7 @@ export const projects: Project[] = [
       "images/casarao-1806-detalhes-construtivos.jpg",
       "images/casarao-1806-contexto-historico.jpg",
     ],
+    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
   },
   {
     title: "Licenciamento Ambiental",
@@ -67,6 +81,7 @@ export const projects: Project[] = [
       "O licenciamento ambiental é um procedimento administrativo obrigatório para a implantação de empreendimentos ou atividades que possam causar impactos ao meio ambiente. Ele garante que as obras sejam executadas de forma sustentável, respeitando a legislação ambiental vigente. No Brasil, os órgãos responsáveis pelo licenciamento podem ser: Federal: IBAMA (Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis); Estadual: Secretarias Estaduais de Meio Ambiente (ex.: CETESB em São Paulo); Municipal: órgãos ambientais locais, quando o impacto é restrito ao município. O processo de licenciamento geralmente envolve três etapas principais: Licença Prévia (LP): concedida na fase de planejamento, aprova a localização e a concepção do projeto, atestando sua viabilidade ambiental. Licença de Instalação (LI): autoriza a execução das obras, com base no cumprimento das exigências definidas na LP. Licença de Operação (LO): emitida após a conclusão das obras, autoriza o início das atividades, verificando a conformidade com as medidas de controle ambiental. Assim, o licenciamento ambiental é fundamental para equilibrar o desenvolvimento urbano com a preservação ambiental, assegurando que a implantação do empreendimento cause o menor impacto possível ao meio. O monitoramento durante a obra é fundamental para assegurar que as condicionantes estabelecidas nas etapas de LP, LI e LO sejam efetivamente cumpridas. Por meio de relatórios periódicos, como o Plano de Controle e Monitoramento Ambiental de Obras (PCMAO), é possível verificar a gestão do canteiro, o controle de resíduos, a adoção de medidas preventivas contra impactos ambientais e a segurança dos trabalhadores. Esse acompanhamento garante a conformidade legal, facilita a emissão da Licença de Operação e assegura que o empreendimento seja concluído de forma sustentável e em harmonia com o entorno",
     images: ["images/Licenciamento-LI.png", "images/Licenciamento-LP.png"],
     year: "2024",
+    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
   },
   {
     title: "EIV - Estudo de Impacto de Vizinhança",
@@ -75,6 +90,7 @@ export const projects: Project[] = [
       "O Estudo de Impacto de Vizinhança (EIV) é um instrumento técnico obrigatório para avaliar os efeitos de novos empreendimentos no entorno urbano. Este estudo analisa aspectos como adensamento populacional, infraestrutura urbana, valorização imobiliária, impactos no trânsito, ventilação e iluminação natural, paisagem urbana e possíveis poluições sonora e atmosférica. O objetivo principal é garantir que empreendimentos sejam implementados de forma harmoniosa com o ambiente urbano existente, promovendo o desenvolvimento sustentável da cidade. O estudo demonstra que há infraestrutura adequada na região para absorver os impactos do empreendimento, que gerará benefícios econômicos através da criação de empregos e movimentação do comércio local, sempre respeitando o zoneamento municipal e as diretrizes da APA de Campinas.",
     images: ["images/EIV.png"],
     year: "2025",
+    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
   },
   {
     title: "RIT - Relatório de Impacto de Trânsito",
@@ -83,5 +99,6 @@ export const projects: Project[] = [
       "O Relatório de Impacto de Trânsito (RIT) é um estudo técnico obrigatório que avalia os impactos de novos empreendimentos no sistema viário e na mobilidade urbana. Este relatório contempla: 1. INTRODUÇÃO; 2. METODOLOGIA; 3. CONSIDERAÇÕES INICIAIS; 4. CARACTERÍSTICAS GERAIS DA ÁREA DE ESTUDO (Localização, Macrozoneamento, Zoneamento, Mobilidade Urbana e Projeto Arquitetônico); 5. ÁREA DE INFLUÊNCIA E SISTEMA VIÁRIO; 6. TRÁFEGO FUTURO; 7. CAIXA DE ACUMULAÇÃO; 8. CARACTERIZAÇÃO DOS SERVIÇOS DE TRANSPORTE; 9. IMPACTOS E MEDIDAS MITIGADORAS; 10. CONCLUSÃO; 11. RESPONSABILIDADE TÉCNICA. Este estudo específico trata de um condomínio de lotes residenciais com 42 lotes, cujo acesso ocorrerá pela Rua Elizabete Gebauer Pimentel Zampeli. As análises demonstraram que o empreendimento não deverá causar impactos significativos ao sistema viário estudado. Apesar de alguns movimentos apresentarem níveis de serviço mais elevados nas interseções devido ao alto fluxo nas vias preferenciais, o pequeno fluxo de veículos da via de acesso não gerará situações críticas, mesmo considerando o crescimento natural da frota municipal. O relatório propõe medidas mitigadoras para problemas existentes relacionados às características locais, como ausência de pavimentação e movimentos atualmente proibidos, garantindo a segurança e fluidez do trânsito na região.",
     images: ["images/RIT.png"],
     year: "2024",
+    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
   },
 ];

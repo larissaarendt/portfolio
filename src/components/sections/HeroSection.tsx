@@ -22,7 +22,7 @@ const HeroSection = () => {
             variant="secondary"
             className="mb-6 bg-isabelline/20 text-isabelline border-isabelline/30"
           >
-            Portfólio de Arquitetura
+            Portfólio
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Larissa Arendt
@@ -31,32 +31,39 @@ const HeroSection = () => {
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-isabelline/90 max-w-2xl mx-auto leading-relaxed">
             Formanda em Arquitetura e Urbanismo, dedicada a criar espaços que
-            inspiram e transformam vidas através do design consciente.
+            inspiram e transformam vidas.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="default"
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Ver Projetos
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => window.print()}
-              className="bg-transparent border-isabelline/30 text-isabelline hover:bg-isabelline/10"
-            >
-              <Printer className="w-4 h-4 mr-2" />
-              Imprimir Portfólio
-            </Button>
-          </div>
         </div>
+      </div>
+
+      {/* Bouncing Arrow */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+        <a
+          href="#about"
+          className="text-isabelline"
+          onClick={(e) => {
+            e.preventDefault();
+            const target = document.querySelector("#about");
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-8 h-8 animate-bounce"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </a>
       </div>
     </section>
   );

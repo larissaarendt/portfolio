@@ -17,7 +17,7 @@ const ContactSection = () => {
             <Mail className="w-8 h-8 text-accent mb-3" />
             <h3 className="font-medium mb-1">Email</h3>
             <p className="text-muted-foreground text-sm">
-              larissa.arendt@email.com
+              larissaarendt.rodrigues@gmail.com
             </p>
           </div>
           <div className="flex flex-col items-center p-6 bg-card rounded-lg shadow-soft">
