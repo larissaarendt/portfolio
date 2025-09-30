@@ -289,7 +289,7 @@ const ProjectGallery = ({
               </div>
 
               {/* Zoom Controls - now top center with margin for mobile */}
-              <div className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-row gap-2 mt-20 md:mt-0 top-6 md:top-6">
+              <div className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-row gap-2 mt-20 md:mt-0 top-6 md:top-6 hidden sm:flex">
                 <Button
                   variant="ghost"
                   size="sm"
