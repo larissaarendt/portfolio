@@ -11,6 +11,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Museu da cidade",
+    category: "Projeto Arquitetônico",
+    description:
+      "Desenvolvido em grupo para a disciplina de Projeto Arquitetônico – Introdução Urbana, o projeto propõe a criação de um novo edifício ao lado do bem tombado da Fábrica Lidgerwood Manufacturing, restaurando o prédio histórico e atribuindo-lhe um novo uso cultural. A composição integra o edifício restaurado e a construção contemporânea, criando um diálogo entre o antigo e o novo, valorizando a memória histórica da cidade...",
+    description_complete: [
+      "Desenvolvido em grupo para a disciplina de Projeto Arquitetônico – Introdução Urbana, o projeto propõe a criação de um novo edifício ao lado do bem tombado da Fábrica Lidgerwood Manufacturing, restaurando o prédio histórico e atribuindo-lhe um novo uso cultural.",
+
+      "A composição integra o edifício restaurado e a construção contemporânea, criando um diálogo entre o antigo e o novo, valorizando a memória histórica da cidade e a estética diferenciada de cada bloco. O contraste entre as fachadas preservadas e os elementos modernos gera um impacto visual marcante, ressaltando tanto a nostalgia do patrimônio histórico quanto a contemporaneidade do acréscimo arquitetônico.",
+
+      "O projeto incentiva a caminhabilidade e a vivência urbana, permitindo que visitantes transitem entre os espaços internos e pelas calçadas adjacentes, promovendo integração com o entorno e oferecendo experiências imersivas de aprendizado e apreciação histórica. Uma praça aberta conecta os edifícios, tornando o museu acessível ao público geral e aos turistas, reforçando o papel do projeto como espaço de cultura, memória e convivência urbana.",
+    ],
+    year: "2024",
+    images: [
+      "images/museu-fachada-principal.jpg",
+      "images/museu-vista-lateral.jpg",
+      "images/museu-perspectiva-aerea.jpg",
+      "images/museu-interior-principal.jpg",
+      "images/museu-area-exposicao.jpg",
+      "images/museu-planta-baixa.jpg",
+      "images/museu-corte-transversal.jpg",
+    ],
+    highlights: [
+      "Restauro e reuso do patrimônio",
+      "Espaços públicos integrados",
+      "Impacto visual contrastante",
+      "Espaços de interação e convivência",
+    ],
+    featured: true,
+  },
+  {
     title: "Farol das Letras - Biblioteca Pública",
     category: "Projeto Arquitetônico",
     description:
@@ -33,7 +63,6 @@ export const projects: Project[] = [
       "images/farol-das-letras-implantacao.jpg",
       "images/farol-das-letras-detalhes-construtivos.jpg",
     ],
-    featured: true,
     highlights: [
       "Integração com a paisagem",
       "Iluminação natural estratégica",
@@ -42,27 +71,19 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "Museu da cidade",
+    title: "Casarão 1806 - Requalificação de Bem Tombado",
     category: "Projeto Arquitetônico",
     description:
-      'O museu foi instalado em edifícios distintos, que se fundem em um grande "calçadão", unificando as três quadras do projeto. Essa junção representa a união de diferentes períodos e fatores que fizeram de Campinas a grande metrópole que é hoje. A disposição e a aparência dos edifícios refletem de maneira clara o que se exibe em seu interior: cada um apresenta um tema relevante vivido em diferentes épocas. Os blocos possuem uma estética contrastante de forma intencional, o que gera um impacto visual entre o novo e o velho, marcado pela contemporaneidade do edifício mais recente e pela nostalgia do edifício antigo, com suas paredes tombadas e tijolos repletos de histórias. Os visitantes podem transitar a pé pelo museu, tanto nos circuitos internos de exposição dos prédios quanto nas calçadas, junto aos pedestres, uma vez que a proposta do programa é convidar para as ruas do calçadão. Outra parte da história da cidade pode ser apreciada de forma imersiva em uma praça aberta ao público em geral e aos turistas do museu.',
-    year: "2024",
-    images: [
-      "images/museu-fachada-principal.jpg",
-      "images/museu-vista-lateral.jpg",
-      "images/museu-perspectiva-aerea.jpg",
-      "images/museu-interior-principal.jpg",
-      "images/museu-area-exposicao.jpg",
-      "images/museu-planta-baixa.jpg",
-      "images/museu-corte-transversal.jpg",
+      "Desenvolvido em grupo para a disciplina de Técnicas Retrospectivas – Projeto, o trabalho propõe a requalificação da Fazenda Mato Dentro, um bem tombado de relevante valor histórico e arquitetônico localizado em Campinas, São Paulo. O projeto inclui a adição de um novo edifício, cuidadosamente posicionado para não comprometer a essência do edifício principal, mantendo sua presença e valor simbólico. O novo...",
+    description_complete: [
+      "Desenvolvido em grupo para a disciplina de Técnicas Retrospectivas – Projeto, o trabalho propõe a requalificação da Fazenda Mato Dentro, um bem tombado de relevante valor histórico e arquitetônico localizado em Campinas, São Paulo.",
+
+      "O projeto inclui a adição de um novo edifício, cuidadosamente posicionado para não comprometer a essência do edifício principal, mantendo sua presença e valor simbólico. O novo volume amplia o uso do espaço, com foco em acessibilidade, garantindo que todos os visitantes possam usufruir das instalações com conforto e segurança.",
+
+      "A proposta prevê a instalação de um restaurante como uso principal, além de pequenas lojas, espaços expositivos tipo museu para preservar e compartilhar a memória histórica da fazenda, e salões de festas e eventos, promovendo a interação social e cultural.",
+
+      "O projeto busca conciliar preservação patrimonial e funcionalidade contemporânea, valorizando a memória coletiva e transformando a fazenda em um espaço urbano ativo, cultural e acessível, capaz de reintegrar o patrimônio à vida da cidade e ao cotidiano da comunidade.",
     ],
-    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
-  },
-  {
-    title: "Casarão 1806",
-    category: "Projeto Arquitetônico",
-    description:
-      "Proposta de requalificação da Fazenda Mato Dentro, um bem tombado de relevante valor histórico e arquitetônico localizado em Campinas, São Paulo. O projeto delimita-se ao estudo e intervenção na área da Fazenda Mato Dentro, situada no interior do Parque Ecológico Monsenhor Emílio José Salim. A área está atualmente desativada e sem uso definido, o que evidencia a urgência de estratégias para sua conservação e reintegração à cidade. A proposta tem como objetivo central reconhecer o valor patrimonial da fazenda, analisar suas características arquitetônicas e históricas, e desenvolver uma proposta de restauro e reuso compatível com sua preservação e com as necessidades urbanas atuais. Além disso, busca-se destacar a importância da memória coletiva e da valorização dos bens culturais como agentes de transformação urbana.",
     year: "2024",
     images: [
       "images/casarao-1806-fachada-principal.jpg",
@@ -72,16 +93,48 @@ export const projects: Project[] = [
       "images/casarao-1806-detalhes-construtivos.jpg",
       "images/casarao-1806-contexto-historico.jpg",
     ],
-    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
+    highlights: [
+      "Preservação do patrimônio histórico",
+      "Novos usos",
+      "Acessibilidade",
+      "Integração com o entorno",
+    ],
   },
   {
-    title: "Licenciamento Ambiental",
+    title: "Licenciamento Ambiental e Monitoramento de Obras",
     category: "Urbanismo e Estudos Urbanos",
     description:
-      "O licenciamento ambiental é um procedimento administrativo obrigatório para a implantação de empreendimentos ou atividades que possam causar impactos ao meio ambiente. Ele garante que as obras sejam executadas de forma sustentável, respeitando a legislação ambiental vigente. No Brasil, os órgãos responsáveis pelo licenciamento podem ser: Federal: IBAMA (Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis); Estadual: Secretarias Estaduais de Meio Ambiente (ex.: CETESB em São Paulo); Municipal: órgãos ambientais locais, quando o impacto é restrito ao município. O processo de licenciamento geralmente envolve três etapas principais: Licença Prévia (LP): concedida na fase de planejamento, aprova a localização e a concepção do projeto, atestando sua viabilidade ambiental. Licença de Instalação (LI): autoriza a execução das obras, com base no cumprimento das exigências definidas na LP. Licença de Operação (LO): emitida após a conclusão das obras, autoriza o início das atividades, verificando a conformidade com as medidas de controle ambiental. Assim, o licenciamento ambiental é fundamental para equilibrar o desenvolvimento urbano com a preservação ambiental, assegurando que a implantação do empreendimento cause o menor impacto possível ao meio. O monitoramento durante a obra é fundamental para assegurar que as condicionantes estabelecidas nas etapas de LP, LI e LO sejam efetivamente cumpridas. Por meio de relatórios periódicos, como o Plano de Controle e Monitoramento Ambiental de Obras (PCMAO), é possível verificar a gestão do canteiro, o controle de resíduos, a adoção de medidas preventivas contra impactos ambientais e a segurança dos trabalhadores. Esse acompanhamento garante a conformidade legal, facilita a emissão da Licença de Operação e assegura que o empreendimento seja concluído de forma sustentável e em harmonia com o entorno",
-    images: ["images/Licenciamento-LI.png", "images/Licenciamento-LP.png"],
-    year: "2024",
-    highlights: ["Integração", "Ambiente", "Marco", "Conexão"],
+      "O licenciamento ambiental é um procedimento obrigatório para empreendimentos que possam causar impactos ao meio ambiente, garantindo que as obras sejam realizadas de forma sustentável e em conformidade com a legislação vigente. No Brasil, os órgãos responsáveis podem atuar em nível federal (IBAMA), estadual (ex.: CETESB em São Paulo) ou municipal, dependendo...",
+    description_complete: [
+      "O licenciamento ambiental é um procedimento obrigatório para empreendimentos que possam causar impactos ao meio ambiente, garantindo que as obras sejam realizadas de forma sustentável e em conformidade com a legislação vigente. No Brasil, os órgãos responsáveis podem atuar em nível federal (IBAMA), estadual (ex.: CETESB em São Paulo) ou municipal, dependendo da abrangência do impacto.",
+
+      "O processo envolve três etapas principais, que estão condicionadas entre si, ou seja, o cumprimento das exigências de uma licença é pré-requisito para a emissão da próxima:",
+
+      "Licença Prévia (LP): aprova a localização e concepção do projeto, atestando sua viabilidade ambiental.",
+
+      "Licença de Instalação (LI): autoriza a execução das obras, condicionada ao cumprimento das exigências definidas na LP.",
+
+      "Licença de Operação (LO): concede a autorização para início das atividades, verificando a conformidade com as medidas de controle ambiental e com todas as exigências da LI.",
+
+      "O monitoramento de obras é fundamental para assegurar que todas as condicionantes sejam cumpridas. Ele envolve o controle do canteiro, monitoramento de resíduos, segurança dos trabalhadores e a implantação correta e completa do empreendimento. Por meio de relatórios periódicos, como o Plano de Controle e Monitoramento Ambiental de Obras (PCMAO), é possível garantir a conformidade legal, reduzir impactos ao meio ambiente e assegurar que o projeto seja concluído de forma sustentável e em harmonia com o entorno.",
+    ],
+    images: [
+      "images/licenciamento-obra-01.jpeg",
+      "images/licenciamento-obra-02.jpeg",
+      "images/licenciamento-obra-03.jpeg",
+      "images/licenciamento-obra-04.jpeg",
+      "images/licenciamento-obra-05.jpeg",
+      "images/licenciamento-obra-06.jpeg",
+      "images/licenciamento-obra-07.jpeg",
+      "images/Licenciamento-LI.png",
+      "images/Licenciamento-LP.png",
+    ],
+    year: "2025",
+    highlights: [
+      "Cumprimento de exigências legais",
+      "Redução de impactos ambientais",
+      "Garantia de segurança e boas práticas",
+    ],
   },
   {
     title: "EIV - Estudo de Impacto de Vizinhança",

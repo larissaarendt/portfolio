@@ -3,18 +3,48 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/hero-library.jpg";
 import { Printer } from "lucide-react";
+
+// Componente de animação arquitetônica
+const ArchitecturalAnimation = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="architectural-animation">
+        {/* Large background rectangles */}
+        <div className="floating-shape rect-1 bg-bone/10"></div>
+        <div className="floating-shape rect-2 bg-isabelline/15"></div>
+        <div className="floating-shape rect-3 bg-wenge/8"></div>
+
+        {/* Medium triangular shapes */}
+        <div className="floating-triangle tri-1 border-bone/20"></div>
+        <div className="floating-triangle tri-2 border-isabelline/25"></div>
+        <div className="floating-triangle tri-3 border-wenge/15"></div>
+
+        {/* Small accent lines */}
+        <div className="floating-line line-1 bg-bone/30"></div>
+        <div className="floating-line line-2 bg-isabelline/40"></div>
+        <div className="floating-line line-3 bg-wenge/20"></div>
+        <div className="floating-line line-4 bg-onyx/10"></div>
+
+        {/* Circular elements for contrast */}
+        <div className="floating-circle circle-1 bg-bone/12"></div>
+        <div className="floating-circle circle-2 bg-isabelline/18"></div>
+      </div>
+    </div>
+  );
+};
+
 const HeroSection = () => {
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat">
         <div className="bg-[#574c54f2] absolute inset-0 bg-gradient-to-r from-taupe/80 to-taupe/40"></div>
       </div>
+
+      {/* Animação arquitetônica abstrata */}
+      <ArchitecturalAnimation />
 
       <div className="relative z-10 text-center text-isabelline px-6">
         <div className="max-w-4xl mx-auto">

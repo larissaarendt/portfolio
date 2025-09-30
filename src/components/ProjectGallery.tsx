@@ -18,6 +18,7 @@ interface ProjectGalleryProps {
   featured: boolean;
   images: string[];
   title: string;
+  description_complete?: string[];
   forceOpen?: boolean;
   onCloseGallery?: () => void;
   onRequestOpenGallery?: () => void;
@@ -30,6 +31,7 @@ const ProjectGallery = ({
   forceOpen,
   onCloseGallery,
   onRequestOpenGallery,
+  description_complete,
 }: ProjectGalleryProps) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -38,13 +40,14 @@ const ProjectGallery = ({
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [rotation, setRotation] = useState(0);
-  const [showInfo, setShowInfo] = useState(false);
+  const [showInfo, setShowInfo] = useState(true); // open by default
   const [isLoading, setIsLoading] = useState(false);
 
   // Bloquear scroll da página quando modal abrir
   useEffect(() => {
     if (selectedImage !== null || forceOpen) {
       document.body.style.overflow = "hidden";
+      setShowInfo(true); // always open info when modal opens
     } else {
       document.body.style.overflow = "unset";
     }
@@ -192,96 +195,167 @@ const ProjectGallery = ({
     return ReactDOM.createPortal(
       <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center">
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-          {/* Header */}
-          <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm">
-                {title}
+          {/* Side by side layout */}
+          <div className="flex w-full h-full">
+            {/* Sidebar Info */}
+            <div
+              className={`bg-white/95 shadow-2xl max-w-md w-full h-full transition-transform duration-300 ease-in-out z-50${
+                showInfo ? "" : " hidden"
+              } md:max-w-md md:w-full w-full fixed md:static left-0 top-0 md:relative`}
+              style={{ willChange: "transform" }}
+            >
+              <div className="p-6 h-full flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-lg font-bold text-gray-900">
+                    Sobre o Projeto
+                  </h2>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowInfo(false)}
+                  >
+                    <X className="w-5 h-5" />
+                  </Button>
+                </div>
+                <div className="overflow-y-auto text-gray-800 flex-1 pr-2">
+                  {description_complete &&
+                  description_complete.filter(
+                    (line) => line && line.trim() !== ""
+                  ).length > 0 ? (
+                    description_complete.some((line) =>
+                      line.trim().startsWith("•")
+                    ) ? (
+                      <ul className="list-disc pl-5 space-y-2">
+                        {description_complete.map((line, idx) =>
+                          line.trim().startsWith("•") ? (
+                            <li key={idx}>{line.replace(/^•\s*/, "")}</li>
+                          ) : (
+                            <li
+                              key={idx}
+                              className="list-none font-semibold mt-4 mb-1"
+                            >
+                              {line}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    ) : (
+                      description_complete.map((line, idx) => (
+                        <p className="mb-4 text-justify" key={idx}>
+                          {line}
+                        </p>
+                      ))
+                    )
+                  ) : (
+                    <p className="text-gray-600">
+                      Nenhuma descrição disponível.
+                    </p>
+                  )}
+                </div>
               </div>
+            </div>
+            {/* Gallery Content */}
+            <div className="flex-1 flex items-center justify-center relative transition-all duration-300">
+              {/* Header */}
+              <div className="absolute top-6 left-6 right-6 z-20 flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white text-sm">
+                    {title}
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-white hover:bg-white/20"
+                    onClick={() => setShowInfo((v) => !v)}
+                  >
+                    <Info className="w-4 h-4" />
+                  </Button>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/20"
+                  onClick={closeGallery}
+                >
+                  <X className="w-5 h-5" />
+                </Button>
+              </div>
+
+              {/* Zoom Controls - now top center with margin for mobile */}
+              <div className="absolute left-1/2 -translate-x-1/2 z-30 flex flex-row gap-2 mt-20 md:mt-0 top-6 md:top-6">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/20"
+                  onClick={zoomIn}
+                >
+                  <ZoomIn className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/20"
+                  onClick={zoomOut}
+                >
+                  <ZoomOut className="w-4 h-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:bg-white/20"
+                  onClick={() => setRotation((prev) => prev + 90)}
+                >
+                  <RotateCw className="w-4 h-4" />
+                </Button>
+              </div>
+
+              {/* Main Image */}
+              <div className="flex items-center justify-center w-full h-full p-4">
+                <img
+                  src={images[currentIndex]}
+                  alt={`${title} - Imagem ${currentIndex + 1}`}
+                  className="max-w-none object-contain transition-all duration-300 select-none shadow-2xl pointer-events-auto cursor-grab"
+                  style={{
+                    transform: `scale(${zoomLevel}) translate(${dragOffset.x}px, ${dragOffset.y}px) rotate(${rotation}deg)`,
+                    maxHeight: "85vh",
+                    maxWidth: "85vw",
+                  }}
+                  onMouseDown={zoomLevel > 1 ? handleMouseDown : undefined}
+                  onMouseMove={
+                    isDragging && zoomLevel > 1 ? handleMouseMove : undefined
+                  }
+                  onMouseUp={
+                    isDragging && zoomLevel > 1 ? handleMouseUp : undefined
+                  }
+                  onMouseLeave={
+                    isDragging && zoomLevel > 1 ? handleMouseUp : undefined
+                  }
+                  draggable={false}
+                />
+              </div>
+
+              {/* Navigation Buttons */}
               <Button
-                variant="ghost"
-                size="sm"
-                className="text-white hover:bg-white/20"
-                onClick={() => setShowInfo(!showInfo)}
+                className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 text-white hover:bg-white/20"
+                onClick={prevImage}
               >
-                <Info className="w-4 h-4" />
+                <ChevronLeft className="w-6 h-6" />
               </Button>
+              <Button
+                className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 text-white hover:bg-white/20"
+                onClick={nextImage}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Button>
+
+              {/* Drag Instructions */}
+              {zoomLevel > 1 && (
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1 rounded-full">
+                  Arraste para mover a imagem
+                </div>
+              )}
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white hover:bg-white/20"
-              onClick={closeGallery}
-            >
-              <X className="w-5 h-5" />
-            </Button>
           </div>
-
-          {/* Main Image */}
-          <div className="flex items-center justify-center w-full h-full p-4">
-            <img
-              src={images[currentIndex]}
-              alt={`${title} - Imagem ${currentIndex + 1}`}
-              className="max-w-none object-contain transition-all duration-300 pointer-events-none select-none shadow-2xl"
-              style={{
-                transform: `scale(${zoomLevel}) translate(${dragOffset.x}px, ${dragOffset.y}px) rotate(${rotation}deg)`,
-                maxHeight: "85vh",
-                maxWidth: "85vw",
-              }}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-            />
-          </div>
-
-          {/* Navigation Buttons */}
-          <Button
-            className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 text-white hover:bg-white/20"
-            onClick={prevImage}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </Button>
-          <Button
-            className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 text-white hover:bg-white/20"
-            onClick={nextImage}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </Button>
-
-          {/* Zoom Controls */}
-          <div className="absolute top-1/2 left-6 z-20 flex flex-col gap-2 -translate-y-1/2">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white hover:bg-white/20"
-              onClick={zoomIn}
-            >
-              <ZoomIn className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white hover:bg-white/20"
-              onClick={zoomOut}
-            >
-              <ZoomOut className="w-4 h-4" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-white hover:bg-white/20"
-              onClick={() => setRotation((prev) => prev + 90)}
-            >
-              <RotateCw className="w-4 h-4" />
-            </Button>
-          </div>
-
-          {/* Drag Instructions */}
-          {zoomLevel > 1 && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1 rounded-full">
-              Arraste para mover a imagem
-            </div>
-          )}
         </div>
       </div>,
       document.body
@@ -314,7 +388,6 @@ const ProjectGallery = ({
         className={`relative h-[240px] bg-gradient-to-br from-muted/30 to-muted/60 overflow-hidden cursor-pointer group transition-all duration-500 hover:shadow-2xl ${
           featured ? "rounded-lg" : "rounded-lg"
         }`}
-        onClick={() => openGallery(0)}
       >
         {/* Main image */}
         <img
@@ -346,11 +419,7 @@ const ProjectGallery = ({
             className="bg-white/95 backdrop-blur-sm text-black px-4 py-2 rounded-full text-sm font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-auto focus:outline-none"
             onClick={(e) => {
               e.stopPropagation();
-              if (typeof onRequestOpenGallery === "function") {
-                onRequestOpenGallery();
-              } else {
-                openGallery(0);
-              }
+              openGallery(0);
             }}
           >
             <Maximize2 className="w-4 h-4 inline mr-2" />

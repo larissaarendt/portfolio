@@ -9,6 +9,7 @@ interface ProjectCardProps {
   title: string;
   category: string;
   description: string;
+  description_complete?: string[];
   year: string;
   images?: string[];
   featured?: boolean;
@@ -21,6 +22,7 @@ const ProjectCard = ({
   title,
   category,
   description,
+  description_complete,
   year,
   images = [],
   featured = false,
@@ -56,6 +58,7 @@ const ProjectCard = ({
               images={images}
               title={title}
               forceOpen={galleryOpen}
+              description_complete={description_complete}
               onCloseGallery={() => setGalleryOpen(false)}
             />
             <div className="absolute top-3 left-3">
@@ -103,7 +106,7 @@ const ProjectCard = ({
   return (
     <Card
       className={`group overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-background to-muted/20 hover:-translate-y-2 ${
-        featured ? "lg:col-span-2 xl:col-span-3" : ""
+        featured ? "" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -118,6 +121,7 @@ const ProjectCard = ({
             forceOpen={galleryOpen}
             onCloseGallery={() => setGalleryOpen(false)}
             onRequestOpenGallery={() => setGalleryOpen(true)}
+            description_complete={description_complete}
           />
 
           {/* Overlay com informações */}
@@ -139,37 +143,42 @@ const ProjectCard = ({
               </div>
             </div>
           )}
+
+          {/* Hover overlay com botão Ver Galeria */}
+          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
+            <button
+              type="button"
+              className="bg-white/95 backdrop-blur-sm text-black px-4 py-2 rounded-full text-sm font-medium shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 pointer-events-auto focus:outline-none"
+              onClick={(e) => {
+                e.stopPropagation();
+                setGalleryOpen(true);
+              }}
+            >
+              <Eye className="w-4 h-4 inline mr-2" />
+              Ver Galeria
+            </button>
+          </div>
         </div>
 
         {/* Conteúdo */}
-        <CardContent
-          className={`${featured ? "p-8 flex flex-col justify-center" : "p-6"}`}
-        >
+        <CardContent className={`p-6`}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Calendar className="w-4 h-4" />
               {year}
             </div>
-            {!featured && (
-              <Badge variant="outline" className="text-xs">
-                {category}
-              </Badge>
-            )}
+            <Badge variant="outline" className="text-xs">
+              {category}
+            </Badge>
           </div>
 
           <h3
-            className={`font-bold mb-4 group-hover:text-accent transition-colors ${
-              featured ? "text-3xl" : "text-xl"
-            }`}
+            className={`font-bold mb-4 group-hover:text-accent transition-colors text-3xl`}
           >
             {title}
           </h3>
 
-          <p
-            className={`text-muted-foreground leading-relaxed mb-6 ${
-              featured ? "text-lg" : "text-sm"
-            }`}
-          >
+          <p className={`text-muted-foreground leading-relaxed mb-6 text-lg`}>
             {description}
           </p>
 
