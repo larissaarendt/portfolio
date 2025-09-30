@@ -252,4 +252,60 @@ export const projects: Project[] = [
       "Acessos do empreendiemento",
     ],
   },
+  {
+    title: "Projeto de sinalização viária",
+    category: "Urbanismo e Estudos Urbanos",
+    images: [
+      "images/sinalizacao-viaria-01.jpeg",
+      "images/sinalizacao-viaria-02.jpeg",
+      "images/sinalizacao-viaria-03.jpeg",
+      "images/sinalizacao-viaria-04.jpeg",
+      "images/sinalizacao-viaria-05.jpeg",
+    ],
+    year: "2024",
+    description:
+      "Projetos de sinalização viária são desenvolvidos para organizar e orientar o fluxo de veículos, pedestres e ciclistas, promovendo maior segurança e fluidez no trânsito. O estudo analisa os pontos críticos de circulação, identificando áreas de maior risco e necessidades específicas de orientação. São propostas soluções de sinalização horizontal e vertical, ajustes de semáforos, faixas de pedestres, rotatórias e outros dispositivos que contribuem para a melhoria da mobilidade urbana...",
+    description_complete: [
+      "Projetos de sinalização viária são desenvolvidos para organizar e orientar o fluxo de veículos, pedestres e ciclistas, promovendo maior segurança e fluidez no trânsito.",
+
+      "O estudo analisa os pontos críticos de circulação, identificando áreas de maior risco e necessidades específicas de orientação. São propostas soluções de sinalização horizontal e vertical, ajustes de semáforos, faixas de pedestres, rotatórias e outros dispositivos que contribuem para a melhoria da mobilidade urbana.",
+
+      "A intervenção visa reduzir acidentes, otimizar o tráfego e integrar a sinalização ao contexto urbano, garantindo um ambiente mais funcional, acessível e seguro para todos os usuários do espaço viário.",
+    ],
+    highlights: [
+      "Mobilidade Urbana",
+      "Acessibilidade",
+      "Segurança no transito ",
+      "Melhoria no fluxo viário",
+    ],
+  },
+  {
+    title: "Educação Ambiental em Obras - Palestra",
+    category: "Sustentabilidade e Meio Ambiente",
+    description:
+      "A educação ambiental em obras consiste em ações e estratégias voltadas para sensibilizar e capacitar trabalhadores, gestores e comunidade sobre práticas sustentáveis durante a execução de empreendimentos. O objetivo é promover o uso consciente de recursos, reduzir impactos ambientais e garantir o cumprimento das normas e condicionantes legais. Durante o acompanhamento das obras, são desenvolvidas atividades como treinamentos sobre gestão de resíduos, uso adequado de materiais, prevenção de poluição, conservação de áreas verdes e segurança ambiental no canteiro. Essas ações contribuem para fortalecer a cultura de sustentabilidade, tornando a obra mais responsável, segura e integrada ao meio ambiente.",
+    description_complete: [
+      "A educação ambiental em obras consiste em ações e estratégias voltadas para sensibilizar e capacitar trabalhadores, gestores e comunidade sobre práticas sustentáveis durante a execução de empreendimentos. O objetivo é promover o uso consciente de recursos, reduzir impactos ambientais e garantir o cumprimento das normas e condicionantes legais.",
+
+      "Durante o acompanhamento das obras, são desenvolvidas atividades como treinamentos sobre gestão de resíduos, uso adequado de materiais, prevenção de poluição, conservação de áreas verdes e segurança ambiental no canteiro. Essas ações contribuem para fortalecer a cultura de sustentabilidade, tornando a obra mais responsável, segura e integrada ao meio ambiente.",
+    ],
+    year: "2024",
+    images: [
+      "images/whatsapp-02.jpeg",
+      "images/whatsapp-01.jpeg",
+      "images/whatsapp-14.jpeg",
+      "images/whatsapp-13.jpeg",
+      "images/whatsapp-12.jpeg",
+      "images/whatsapp-11.jpeg",
+      "images/whatsapp-10.jpeg",
+      "images/whatsapp-09.jpeg",
+      "images/whatsapp-08.jpeg",
+      "images/whatsapp-07.jpeg",
+      "images/whatsapp-06.jpeg",
+      "images/whatsapp-05.jpeg",
+      "images/whatsapp-04.jpeg",
+      "images/whatsapp-03.jpeg",
+    ],
+    highlights: [],
+  },
 ];

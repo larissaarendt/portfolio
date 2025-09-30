@@ -28,11 +28,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-
+import { aboutData } from "@/data/aboutData";
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("sobre");
   const [isVisible, setIsVisible] = useState(false);
-  const Idade = new Date().getFullYear() - new Date("2003-06-16").getFullYear();
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,50 +49,15 @@ const AboutSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const skills = [
-    { name: "AutoCAD", level: 95, icon: Ruler },
-    { name: "SketchUp", level: 80, icon: Building2 },
-    { name: "Revit", level: 50, icon: Building2 },
-    { name: "Render", level: 50, icon: Building2 },
-    { name: "Canva", level: 90, icon: Palette },
-    { name: "QGIS / ArcGIS", level: 70, icon: MapPin },
-    { name: "Google Earth Pro", level: 90, icon: Globe },
-    { name: "Pacote Office", level: 90, icon: FileText },
-  ];
-
-  const interests = [
-    {
-      name: "Arquitetura residencial, comercial e institucional",
-      icon: Landmark,
-      color: "text-purple-500",
-    },
-    {
-      name: "Projeto de interiores e corportativos",
-      icon: LampFloor,
-      color: "text-pink-500",
-    },
-    { name: "Gestão de obras", icon: Construction, color: "text-red-500" },
-    { name: "Planejamento Urbano", icon: Building2, color: "text-blue-500" },
-    {
-      name: "Aprovação de projetos",
-      icon: BookCheck,
-      color: "text-green-500",
-    },
-    { name: "Licenciamento", icon: Award, color: "text-amber-500" },
-  ];
-
-  const achievements = [
-    { title: "Projetos Desenvolvidos", value: "30+", icon: Building2 },
-    { title: "Semestres Concluídos", value: "10", icon: GraduationCap },
-    { title: "Horas de Estágio", value: "400+", icon: Calendar },
-    { title: "Certificações", value: "5", icon: Award },
-  ];
-
-  const tabs = [
-    { id: "sobre", label: "Sobre", icon: Users },
-    { id: "habilidades", label: "Habilidades", icon: Lightbulb },
-    { id: "objetivos", label: "Objetivos", icon: Target },
-  ];
+  const {
+    idade,
+    filosofia,
+    habilidades,
+    objetivos,
+    achievements,
+    tabs,
+    interests,
+  } = aboutData;
 
   return (
     <section
@@ -234,33 +199,14 @@ const AboutSection = () => {
                       <User className="w-6 h-6 text-accent" />
                       Sobre
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      Tenho {Idade} anos e sou estudante de Arquitetura e
-                      Urbanismo. Iniciei minha trajetória profissional no setor
-                      de móveis corporativos, onde aprendi sobre funcionalidade
-                      e organização dos espaços. Em 2023, ingressei como
-                      estagiária na Prefeitura Municipal de Valinhos, onde tive
-                      meu primeiro contato com estudos urbanos e projetos de
-                      sinalização viária. Hoje, atuo em uma empresa
-                      especializada em estudos de impacto e licenciamento,
-                      vivenciando o outro lado: o de avaliar, redigir e conduzir
-                      processos técnicos.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      Meu trabalho é focado em licenciamento ambiental, estudos
-                      de impacto urbano e acompanhamento ambiental de obras,
-                      sempre buscando soluções que conciliem desenvolvimento,
-                      responsabilidade socioambiental e viabilidade legal.
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Acredito que o urbanismo tem o poder de estruturar cidades
-                      mais justas e funcionais, onde cada estudo e projeto
-                      contribui para melhorar a relação entre espaço construído,
-                      meio ambiente e qualidade de vida da população. O que me
-                      move é justamente essa capacidade do urbanismo de
-                      transformar territórios e, através deles, transformar
-                      vidas.
-                    </p>
+                    {Object.values(filosofia).map((text, index) => (
+                      <p
+                        key={index}
+                        className="text-muted-foreground leading-relaxed mb-6"
+                      >
+                        {text}
+                      </p>
+                    ))}
                   </Card>
 
                   <Card className="p-6 border-0 bg-gradient-to-br from-background to-muted/20">
@@ -294,7 +240,7 @@ const AboutSection = () => {
                       Habilidades Técnicas
                     </h3>
                     <div className="space-y-6">
-                      {skills.map((skill, index) => (
+                      {habilidades.map((skill, index) => (
                         <div key={skill.name} className="space-y-2">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
@@ -353,91 +299,24 @@ const AboutSection = () => {
                       Objetivos Profissionais
                     </h3>
                     <div className="space-y-4">
-                      <div className="flex gap-4">
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-semibold mb-1">
-                            Curto Prazo (2025-2026)
-                          </h4>
-                          <p className="text-muted-foreground text-sm">
-                            Concluir a graduação em Arquitetura e Urbanismo,
-                            aprofundar experiência em planejamento e estudos
-                            urbanos, licenciamento, aprovação de projetos, e
-                            desenvolver um TCC com excelência.
-                          </p>
+                      {objetivos.map((objetivo, index) => (
+                        <div key={index} className="flex gap-4">
+                          <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <h4 className="font-semibold mb-1">
+                              {objetivo.prazo}
+                            </h4>
+                            <p className="text-muted-foreground text-sm">
+                              {objetivo.descricao}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-semibold mb-1">
-                            Médio Prazo (2026-2028)
-                          </h4>
-                          <p className="text-muted-foreground text-sm">
-                            Obter registro no CAU, especializar-me em estudos
-                            urbanos.
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          <h4 className="font-semibold mb-1">
-                            Longo Prazo (2028+)
-                          </h4>
-                          <p className="text-muted-foreground text-sm">
-                            Atuar em posição de destaque em empresas ou órgãos
-                            públicos na área de urbanismo, contribuir para
-                            políticas públicas urbanas, implementar projetos que
-                            integrem desenvolvimento, sustentabilidade e
-                            qualidade de vida, e mentorar novos profissionais na
-                            área.
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
-                  </Card>
-
-                  <Card className="p-6 border-0 bg-gradient-to-br from-accent/5 to-accent/10 border border-accent/20">
-                    <h3 className="text-xl font-bold mb-4 text-accent">
-                      Visão Pessoal
-                    </h3>
-                    <blockquote className="text-muted-foreground italic leading-relaxed">
-                      "Acredito que a arquitetura deve ser uma força positiva no
-                      mundo, criando espaços que não apenas atendam às
-                      necessidades humanas, mas também respeitem e preservem
-                      nosso planeta para as futuras gerações."
-                    </blockquote>
                   </Card>
                 </div>
               )}
             </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-accent/5 to-accent/10 rounded-2xl border border-accent/20">
-          <h3 className="text-2xl font-bold mb-4">Vamos Conversar?</h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Estou sempre interessada em conhecer novos projetos e oportunidades
-            de aprendizado.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              onClick={() => {
-                window.location.href =
-                  "mailto:larissaarendt.rodrigues@gmail.com";
-              }}
-              size="lg"
-              className="shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <Mail className="w-5 h-5 mr-2" />
-              Entrar em Contato
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => window.print()}>
-              <Download className="w-5 h-5 mr-2" />
-              Download CV
-            </Button>
           </div>
         </div>
       </div>

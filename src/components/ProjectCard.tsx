@@ -183,38 +183,18 @@ const ProjectCard = ({
           </p>
 
           {/* Destaques do projeto (dinâmico) */}
-          <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-dashed border-muted-foreground/30">
-            <h4 className="font-semibold mb-3 text-sm text-accent">
-              Destaques do Projeto:
-            </h4>
-            <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
-              {(highlights && highlights.length > 0
-                ? highlights
-                : [
-                    "Integração com o entorno urbano e natural",
-                    "Soluções inovadoras e funcionais",
-                    "Valorização da experiência do usuário",
-                    "Compromisso com sustentabilidade e acessibilidade",
-                  ]
-              ).map((item, idx) => (
-                <div className="flex items-center gap-2" key={idx}>
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Para projetos sem imagens */}
-          {!images.length && !featured && (
-            <div className="mb-6 p-4 bg-gradient-to-br from-accent/5 to-accent/10 rounded-lg border border-accent/20">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-accent/20 rounded-full mx-auto mb-3 flex items-center justify-center">
-                  <span className="text-accent text-lg">📋</span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Documentação técnica disponível na versão impressa
-                </p>
+          {highlights && highlights.length > 0 && (
+            <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-dashed border-muted-foreground/30">
+              <h4 className="font-semibold mb-3 text-sm text-accent">
+                Destaques do Projeto:
+              </h4>
+              <div className="grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+                {highlights.map((item, idx) => (
+                  <div className="flex items-center gap-2" key={idx}>
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
           )}
