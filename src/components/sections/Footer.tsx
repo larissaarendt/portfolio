@@ -14,7 +14,7 @@ const Footer = () => {
             </span>
           </div>
           <p className="text-isabelline/70 text-sm">
-            © 2024 - Portfólio Acadêmico de Arquitetura e Urbanismo
+            © 2024 - {new Date().getFullYear()} Todos os direitos reservados.
           </p>
         </div>
       </div>

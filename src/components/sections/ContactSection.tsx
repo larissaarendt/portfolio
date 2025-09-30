@@ -23,16 +23,22 @@ const ContactSection = () => {
           <div className="flex flex-col items-center p-6 bg-card rounded-lg shadow-soft">
             <Phone className="w-8 h-8 text-accent mb-3" />
             <h3 className="font-medium mb-1">Telefone</h3>
-            <p className="text-muted-foreground text-sm">(XX) XXXXX-XXXX</p>
+            <p className="text-muted-foreground text-sm">(19) 99514-0363</p>
           </div>
           <div className="flex flex-col items-center p-6 bg-card rounded-lg shadow-soft">
             <MapPin className="w-8 h-8 text-accent mb-3" />
             <h3 className="font-medium mb-1">Localização</h3>
-            <p className="text-muted-foreground text-sm">Cidade, Estado</p>
+            <p className="text-muted-foreground text-sm">Valinhos, SP</p>
           </div>
         </div>
 
-        <Button size="lg" className="bg-accent hover:bg-accent/90">
+        <Button
+          size="lg"
+          className="bg-accent hover:bg-accent/90"
+          onClick={() => {
+            window.location.href = "mailto:larissaarendt.rodrigues@gmail.com";
+          }}
+        >
           <Mail className="w-4 h-4 mr-2" />
           Entrar em Contato
         </Button>

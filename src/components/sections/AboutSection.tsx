@@ -28,7 +28,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import portfolioBg from "@/assets/portfolio-bg.jpg";
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState("sobre");
@@ -114,14 +113,11 @@ const AboutSection = () => {
           <div className="lg:col-span-1">
             <Card className="overflow-hidden shadow-xl border-0 bg-gradient-to-br from-background to-muted/30">
               <div
-                className="relative h-64 bg-cover bg-center"
-                style={{ backgroundImage: `url(${portfolioBg})` }}
+                className="relative h-96 bg-cover bg-center"
+                style={{ backgroundImage: `url("/images/eu.jpeg")` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <div className="w-20 h-20 bg-accent rounded-2xl mx-auto mb-4 flex items-center justify-center shadow-lg">
-                    <Building2 className="w-10 h-10 text-accent-foreground" />
-                  </div>
                   <h3 className="text-xl font-bold text-center">
                     Estudante de Arquitetura
                   </h3>
@@ -135,7 +131,7 @@ const AboutSection = () => {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <MapPin className="w-5 h-5 text-accent" />
-                    <span className="text-sm">Brasil</span>
+                    <span className="text-sm">Valinhos, SP</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <GraduationCap className="w-5 h-5 text-accent" />
@@ -168,7 +164,16 @@ const AboutSection = () => {
                     >
                       <Mail className="w-4 h-4" />
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        window.open(
+                          "https://www.linkedin.com/in/larissa-arendt/",
+                          "_blank"
+                        )
+                      }
+                    >
                       <Linkedin className="w-4 h-4" />
                     </Button>
                   </div>
