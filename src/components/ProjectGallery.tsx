@@ -194,15 +194,22 @@ const ProjectGallery = ({
 
     return ReactDOM.createPortal(
       <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center">
-        <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+        <div
+          className="relative w-full h-full flex items-center justify-center overflow-hidden"
+          style={{ maxWidth: "100vw", maxHeight: "100vh" }}
+        >
           {/* Side by side layout */}
           <div className="flex w-full h-full">
             {/* Sidebar Info */}
             <div
-              className={`bg-white/95 shadow-2xl max-w-md w-full h-full transition-transform duration-300 ease-in-out z-50${
+              className={`bg-white/95 shadow-2xl max-w-4xl w-full h-full transition-transform duration-300 ease-in-out z-50${
                 showInfo ? "" : " hidden"
-              } md:max-w-md md:w-full w-full fixed md:static left-0 top-0 md:relative`}
-              style={{ willChange: "transform" }}
+              } md:max-w-4xl md:w-full w-full fixed md:static left-0 top-0 md:relative`}
+              style={{
+                willChange: "transform",
+                minWidth: "300px",
+                maxWidth: "100vw",
+              }}
             >
               <div className="p-6 h-full flex flex-col">
                 <div className="flex items-center justify-between mb-6">
@@ -310,7 +317,10 @@ const ProjectGallery = ({
               </div>
 
               {/* Main Image */}
-              <div className="flex items-center justify-center w-full h-full p-4">
+              <div
+                className="flex items-center justify-center w-full h-full p-4"
+                style={{ maxWidth: "calc(100vw - 300px)", maxHeight: "100vh" }}
+              >
                 <img
                   src={images[currentIndex]}
                   alt={`${title} - Imagem ${currentIndex + 1}`}

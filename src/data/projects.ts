@@ -102,7 +102,7 @@ export const projects: Project[] = [
   },
   {
     title: "Licenciamento Ambiental e Monitoramento de Obras",
-    category: "Urbanismo e Estudos Urbanos",
+    category: "Licenciamento",
     description:
       "O licenciamento ambiental é um procedimento obrigatório para empreendimentos que possam causar impactos ao meio ambiente, garantindo que as obras sejam realizadas de forma sustentável e em conformidade com a legislação vigente. No Brasil, os órgãos responsáveis podem atuar em nível federal (IBAMA), estadual (ex.: CETESB em São Paulo) ou municipal, dependendo...",
     description_complete: [
@@ -138,7 +138,7 @@ export const projects: Project[] = [
   },
   {
     title: "EIV - Estudo de Impacto de Vizinhança",
-    category: "Projeto Arquitetônico",
+    category: "Estudos Urbanos",
     description:
       "O Estudo de Impacto de Vizinhança (EIV) é um instrumento técnico obrigatório para avaliar os efeitos de novos empreendimentos no entorno urbano. Este estudo analisa aspectos como adensamento populacional, infraestrutura urbana, valorização imobiliária, impactos no trânsito, ventilação e iluminação natural, paisagem urbana e possíveis poluições sonora e atmosférica. O objetivo principal é garantir que empreendimentos sejam...",
     description_complete: [
@@ -188,7 +188,7 @@ export const projects: Project[] = [
   },
   {
     title: "RIT - Relatório de Impacto de Trânsito",
-    category: "Urbanismo e Estudos Urbanos",
+    category: "Estudos Urbanos",
     description:
       "O Relatório de Impacto de Trânsito (RIT) é um estudo técnico essencial para analisar os efeitos de novos empreendimentos sobre o sistema viário e a circulação de pedestres no entorno urbano. Ele considera indicadores como fluxo de tráfego, capacidade viária, nível de serviço, acessos, pontos de congestionamento e segurança, além da integração com o transporte público e modos ativos, como ciclovias e calçadas. O objetivo do RIT é garantir que o projeto seja compatível...",
     description_complete: [
@@ -254,7 +254,7 @@ export const projects: Project[] = [
   },
   {
     title: "Projeto de sinalização viária",
-    category: "Urbanismo e Estudos Urbanos",
+    category: "Estudos Urbanos",
     images: [
       "images/sinalizacao-viaria-01.jpeg",
       "images/sinalizacao-viaria-02.jpeg",
@@ -281,7 +281,7 @@ export const projects: Project[] = [
   },
   {
     title: "Educação Ambiental em Obras - Palestra",
-    category: "Sustentabilidade e Meio Ambiente",
+    category: "Licenciamento",
     description:
       "A educação ambiental em obras consiste em ações e estratégias voltadas para sensibilizar e capacitar trabalhadores, gestores e comunidade sobre práticas sustentáveis durante a execução de empreendimentos. O objetivo é promover o uso consciente de recursos, reduzir impactos ambientais e garantir o cumprimento das normas e condicionantes legais. Durante o acompanhamento das obras, são desenvolvidas atividades como treinamentos sobre gestão de resíduos, uso adequado de materiais, prevenção de poluição, conservação de áreas verdes e segurança ambiental no canteiro. Essas ações contribuem para fortalecer a cultura de sustentabilidade, tornando a obra mais responsável, segura e integrada ao meio ambiente.",
     description_complete: [
